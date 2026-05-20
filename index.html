@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Blue Devil PWA - Ibrahim</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#3b82f6">
+</head>
+<body>
+
+    <div id="ui-layer">
+        <div id="menu-screen" class="screen active">
+            <h1 id="txt-title">Blue Devil 😈</h1>
+            <button class="btn-main btn-play" id="btn-play-ui">تشغيل اللعبة ▶️</button>
+            <button class="btn-main btn-settings" id="btn-settings-ui">الإعدادات ⚙️</button>
+            <div style="margin-top: auto; padding-bottom: 10px; font-size: 11px; text-align: center;">
+            <a href="privacy-policy.html" style="color: #aaa; text-decoration: none;">سياسة الخصوصية</a>
+            <span style="color: #666; margin: 0 10px;">|</span>
+            <a href="terms.html" style="color: #aaa; text-decoration: none;">شروط الاستخدام</a>
+            <div style="margin-top: 5px; color: #777;">Copyright © 2026 <strong>IBRAHIM</strong></div>
+        </div>
+        </div>
+
+        <div id="settings-screen" class="screen">
+            <h1 id="txt-set-title">الإعدادات ⚙️</h1>
+            <div class="lang-group">
+                <button class="lang-btn active" id="btn-lang-ar">العربية</button>
+                <button class="lang-btn" id="btn-lang-en">English</button>
+                <button class="btn" id="remove-ads-btn" style="background-color: #ffc107; color: black; box-shadow: 0 6px 0 #d39e00; margin-top: 15px;">
+                    🚫 إزالة الإعلانات
+                </button>
+            </div>
+            <div class="slider-container">
+                <label id="txt-volume">مستوى الصوت: 50%</label>
+                <input type="range" id="volume-slider" min="0" max="1" step="0.1" value="0.5">
+                <div class="dev-name" id="txt-dev-by">تطوير <span>BRAHIM</span></div>
+            </div>
+            <button class="btn-main btn-back" id="btn-back-settings">رجوع</button>
+        </div>
+
+        <div id="levels-screen" class="screen">
+            <h1 id="txt-lvl-title">اختر المستوى</h1>
+            <div class="level-grid" id="level-buttons-container"></div>
+            <button class="btn-main btn-back" id="btn-back-levels">رجوع</button>
+        </div>
+
+                <div id="victory-screen" class="screen">
+            <h1 id="txt-complete-title" style="color: #28a745; font-size: 2.5rem; margin-top: 5vh;">🎉 ألف مبروك يا بطل! 🎉</h1>
+            <p id="txt-complete-desc" style="font-size: 1.2rem; line-height: 1.8; margin: 20px; padding: 0 15px; color: white;">
+                لقد أنهيت جميع المستويات الـ 40 بنجاح! نعتذر بشدة إذا كنا سبباً في ارتفاع ضغط دمك أو رغبتك في تكسير الهاتف، لكنك أثبتّ أنك أسطورة في الصبر والذكاء.
+            </p>
+            <p style="font-size: 1.5rem; color: #ff4444; font-weight: bold;"><span id="txt-total-deaths">عدد مرات موتك الكلية: </span><span id="final-deaths">0</span> 💀</p>
+            
+            <p style="font-size: 1.5rem; color: #ffc107; font-weight: bold;"><span id="txt-total-time">الوقت المستغرق: </span><span id="final-time">0m 0s</span> ⏱️</p>
+            <p style="font-size: 1.5rem; color: #0dcaf0; font-weight: bold;"><span id="txt-rank">اللقب: </span><span id="final-rank">...</span></p>
+
+            <button id="btn-return-menu" class="btn-main" onclick="switchScreen('menu-screen')" style="background-color: #007bff; color: white; border: none; padding: 15px 30px; font-size: 1.2rem; border-radius: 8px;">العودة للقائمة الرئيسية</button>
+        </div>
+    </div>
+
+    <div id="game-layer" style="display: none;">
+        <div id="in-game-ui" dir="rtl">
+            <span><span id="txt-level">المستوى</span>: <span id="lbl-lvl">1</span></span>
+            <button id="btn-exit-game">خروج 🚪</button>
+            <span style="color: #ff4444">💀 <span id="lbl-death">0</span></span>
+        </div>
+
+        <canvas id="gameCanvas" width="960" height="540" style="width: 100%; display: block;"></canvas>
+
+        <div id="touch-overlay">
+            <div class="touch-zone zone-left" dir="ltr">
+                <div class="btn-game" id="btn-left">◀</div>
+                <div class="btn-game" id="btn-right">▶</div>
+            </div>
+            <div class="touch-zone zone-right">
+                <div class="btn-game" id="btn-jump">▲</div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // تسجيل Service Worker باش تولي اللعبة تطبيق PWA ويخدم أوفلاين
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(reg => console.log('✅ Service Worker Registered!', reg))
+                    .catch(err => console.log('❌ Service Worker Error:', err));
+            });
+        }
+    </script>
+    <script src="levels.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+/* 1. إعدادات الصفحة الأساسية والسلاسة الفائقة */
+body { margin: 0; background-color: #0f172a; color: white; font-family: 'Segoe UI', Tahoma, sans-serif; overflow: hidden; user-select: none; }
+.screen { display: none; width: 100vw; height: 100vh; position: absolute; top: 0; left: 0; animation: smoothFade 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+.screen.active { display: flex !important; flex-direction: column !important; align-items: center !important; justify-content: center !important; }
+@keyframes smoothFade { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+
+/* 2. بصمة واسم المطور */
+.dev-name { position: absolute; bottom: 30px; font-size: 1.1rem; color: #94a3b8; font-weight: bold; letter-spacing: 1px; }
+.dev-name span { color: #3b82f6; text-shadow: 0 0 10px rgba(59, 130, 246, 0.5); }
+
+/* 3. تصميم الأزرار ثلاثية الأبعاد (الزاهية والعميقة) */
+.btn-main, .btn, .lang-btn { 
+    background: linear-gradient(145deg, #3b82f6, #2563eb); 
+    color: white; border: none; padding: 15px 35px; font-size: 1.2rem; 
+    border-radius: 12px; cursor: pointer; transition: all 0.15s ease-in-out; 
+    box-shadow: 0 8px 0 #1d4ed8, 0 15px 20px rgba(0,0,0,0.3); 
+    margin: 10px; font-weight: bold; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+.btn-main:active, .btn:active, .lang-btn:not(.active):active { 
+    transform: translateY(8px); 
+    box-shadow: 0 0px 0 #1d4ed8, 0 5px 10px rgba(0,0,0,0.4); 
+}
+
+/* تنسيق قسم اللغات وزر الإعلانات لمنع التشوه */
+.lang-group { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-bottom: 20px; width: 90%; max-width: 400px; }
+.lang-btn { padding: 12px 25px; flex-grow: 1; }
+
+/* شكل زر اللغة النشط (يظل مضغوطاً لأسفل وثابتاً) */
+.lang-btn.active { 
+    background: linear-gradient(145deg, #059669, #047857); 
+    box-shadow: 0 0px 0 #047857 !important; 
+    transform: translateY(8px) !important; 
+}
+
+#remove-ads-btn { background: linear-gradient(145deg, #fbbf24, #f59e0b) !important; color: #78350f !important; box-shadow: 0 8px 0 #d97706 !important; width: 100%; margin-top: 10px; }
+#remove-ads-btn:active { box-shadow: 0 0px 0 #d97706 !important; transform: translateY(8px); }
+
+/* شريط التحكم بالصوت */
+.slider-container { margin: 20px 0; display: flex; flex-direction: column; align-items: center; gap: 10px; font-weight: bold; font-size: 1.1rem; }
+input[type=range] { width: 250px; accent-color: #3b82f6; cursor: pointer; }
+
+/* 4. شبكة أزرار المستويات */
+.level-grid { max-height: 55vh; overflow-y: auto; padding: 15px; width: 90%; max-width: 500px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; direction: ltr; }
+.lvl-btn { background: linear-gradient(145deg, #3b82f6, #2563eb); color: white; border: none; padding: 15px 5px; font-size: 1.3rem; border-radius: 10px; box-shadow: 0 6px 0 #1d4ed8; transition: 0.1s; font-weight: bold; cursor: pointer; }
+.lvl-btn:active { transform: translateY(6px); box-shadow: 0 0px 0 #1d4ed8; }
+.lvl-btn.locked { background: linear-gradient(145deg, #475569, #334155); box-shadow: 0 6px 0 #1e293b; color: #94a3b8; cursor: not-allowed; }
+
+/* 5. إعدادات الكانفاس المتمركز تماماً بالوسط مع خلفية داكنة جداً */
+/* 5. إعدادات الكانفاس المتمركز تماماً بالوسط مع الخلفية الزرقاء القديمة */
+/* 5. إعدادات الكانفاس المتمركز تماماً بالوسط مع الخلفية الزرقاء القديمة */
+canvas { 
+    width: 100vw !important; 
+    height: auto !important; 
+    max-height: 100vh !important; 
+    object-fit: contain; 
+    aspect-ratio: 960 / 400; 
+    background: #3a7bd5; /* تم إرجاع اللون الأزرق القديم هنا */
+    box-shadow: inset 0 0 50px rgba(0,0,0,0.5); 
+    margin: auto; 
+}
+#game-layer { width: 100vw; height: 100vh; position: relative; background: #000; display: flex; flex-direction: column; justify-content: center; align-items: center;}
+#in-game-ui { position: absolute; top: 15px; left: 0; width: 100%; display: flex; justify-content: space-between; padding: 0 25px; box-sizing: border-box; font-size: 1.2rem; font-weight: bold; z-index: 10; pointer-events: none; text-shadow: 1px 1px 3px black;}
+#btn-exit-game { background: linear-gradient(145deg, #ef4444, #dc2626); border: none; padding: 8px 20px; color: white; border-radius: 8px; box-shadow: 0 5px 0 #991b1b; font-weight:bold; pointer-events: auto; cursor: pointer; transition: 0.1s;}
+#btn-exit-game:active { transform: translateY(5px); box-shadow: 0 0 0 #991b1b; }
+
+/* أزرار اللمس الشفافة الدائرية أسفل الشاشة */
+#touch-overlay { position: absolute; bottom: 30px; width: 100%; display: flex; justify-content: space-between; padding: 0 40px; box-sizing: border-box; pointer-events: none; z-index: 10;}
+.touch-zone { display: flex; gap: 20px; pointer-events: auto; }
+.btn-game { 
+    background: rgba(255, 255, 255, 0.15); border: 2px solid rgba(255, 255, 255, 0.4); 
+    color: white; width: 70px; height: 70px; display: flex; align-items: center; justify-content: center; 
+    font-size: 28px; border-radius: 50%; backdrop-filter: blur(5px); transition: 0.1s; cursor: pointer;
+    box-shadow: 0 6px 0 rgba(0,0,0,0.3);
+}
+.btn-game:active { background: rgba(255, 255, 255, 0.4); transform: translateY(6px); box-shadow: 0 0 0 rgba(0,0,0,0.3); border-color: white;}
