@@ -112,4 +112,10 @@ canvas {
 #settings-screen #btn-back-settings {
     padding: 6px 20px;
     font-size: 1rem;
+    #settings-screen #btn-back-settings {
+    padding: 6px 20px;
+    font-size: 1rem;
+    margin-top: 20px !important;
     }
+    
+    
