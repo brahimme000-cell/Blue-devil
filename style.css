@@ -73,3 +73,43 @@ canvas {
     box-shadow: 0 6px 0 rgba(0,0,0,0.3);
 }
 .btn-game:active { background: rgba(255, 255, 255, 0.4); transform: translateY(6px); box-shadow: 0 0 0 rgba(0,0,0,0.3); border-color: white;}
+/* --- تصغير عناصر شاشة الإعدادات لتناسب اللعب بالعرض --- */
+
+/* تصغير العنوان والمسافة اللي تحتو */
+#settings-screen #txt-set-title {
+    font-size: 1.5rem;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+/* تقليل المسافات بين أزرار اللغة وزر إزالة الإعلانات */
+#settings-screen .lang-group {
+    margin-bottom: 5px;
+}
+#settings-screen .lang-btn {
+    padding: 8px 20px;
+    font-size: 1rem;
+}
+#remove-ads-btn {
+    padding: 8px 20px !important;
+    font-size: 1rem !important;
+    margin-top: 5px !important;
+}
+
+/* تقليل مسافة شريط الصوت */
+#settings-screen .slider-container {
+    margin: 10px 0;
+}
+#settings-screen #txt-volume {
+    font-size: 0.9rem;
+}
+
+/* جمع حقوق المطور وزر الرجوع باش ما يتداخلوش */
+#txt-dev-by {
+    font-size: 0.8rem;
+    margin-bottom: 5px;
+}
+#settings-screen #btn-back-settings {
+    padding: 6px 20px;
+    font-size: 1rem;
+    }
