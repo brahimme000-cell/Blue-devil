@@ -1,10 +1,12 @@
-const CACHE_NAME = 'blue-devil-v1';
+const CACHE_NAME = 'blue-devil-v2';
 const ASSETS = [
+  './',
   'index.html',
   'style.css',
   'levels.js',
   'game.js',
-  'manifest.json'
+  'manifest.json',
+  'icon-512.png'
 ];
 
 self.addEventListener('install', e => {
