@@ -88,6 +88,21 @@
             });
         }
     </script>
+    <script>
+  // فحص حالة الاتصال عند فتح اللعبة
+  window.addEventListener('load', function() {
+    if (!navigator.onLine) {
+      // إذا كان بدون إنترنت
+      document.body.innerHTML = `
+        <div style="height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background-color: #1a1a2e; color: white; font-family: sans-serif; text-align: center; padding: 20px;">
+          <h2 style="color: #ff4757;">⚠️ تنبيه</h2>
+          <p style="font-size: 18px; line-height: 1.5;">المرجو الاتصال بالإنترنت <b>لمرة واحدة فقط</b> لتحميل موارد اللعبة.<br>بعد ذلك يمكنك اللعب بدون إنترنت (Offline) دائماً.</p>
+          <button onclick="window.location.reload()" style="margin-top: 20px; padding: 10px 20px; font-size: 16px; background-color: #2ed573; color: white; border: none; border-radius: 5px; cursor: pointer;">إعادة المحاولة</button>
+        </div>
+      `;
+    }
+  });
+    </script>
         <script src="ads.js"></script>
     <script src="levels.js"></script>
     <script src="game.js"></script>
